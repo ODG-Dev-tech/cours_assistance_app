@@ -27,7 +27,7 @@ export const createClient = (request: NextRequest) => {
           })
           cookiesToSet.forEach(({ name, value, options }) =>
             supabaseResponse.cookies.set(name, value, options)
-          )
+        )
         },
       },
     },

@@ -1,15 +1,8 @@
-import { createClient } from "@/utils/supabase/client"
 
 export default async function Home() {
-  const supabase = await createClient();
-  
-  const { data, error } = await supabase.from('document_chunks').select('*');
-
-  console.log('data:', data)
-  console.log('error:', error)
 
   return (
-    <div>
+    <div className="p-2 border border-green-300 rounded-2xl shodow-green-50 shodow-xl text-2xl w-sm min-h-full ">
       <p>Vérifie ton terminal</p>
     </div>
   )
