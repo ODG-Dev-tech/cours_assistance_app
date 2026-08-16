@@ -24,9 +24,11 @@ export default async function FichesPage() {
         {fiches && fiches.length > 0 ? (
             <ul>
             {fiches.map((fiche) => (
-                <li key={fiche.id}>
+                <Link href={`/fiches/${fiche.id}`} key={fiche.id}>
+                <li>
                 {fiche.title} — {fiche.discipline} — {fiche.theme}
                 </li>
+                </Link>
             ))}
             </ul>
         ) : (

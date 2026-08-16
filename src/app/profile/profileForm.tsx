@@ -37,7 +37,7 @@ export default function ProfileForm({ initialProfile }: { initialProfile: Profil
     if (error) {
         setMessage(`Erreur : ${error.message}`)
         } else {
-            setMessage('Profil mis à jour !')
+        setMessage('Profil mis à jour !')
         setIsEditing(false)
         }
     }
@@ -62,7 +62,6 @@ export default function ProfileForm({ initialProfile }: { initialProfile: Profil
         <label htmlFor="zone">Zone <input type="text" id='zone' name='zone' value={zone} onChange={e=> setZone(e.target.value)} /></label>
         <input type="submit" value="Enregistrer" />
         <button type="button" onClick={() => setIsEditing(false)}>Annuler</button>
-        
         </form>
     )
 }

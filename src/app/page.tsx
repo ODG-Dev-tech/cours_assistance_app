@@ -1,9 +1,11 @@
+import Link from "next/link"
 
 export default async function Home() {
 
   return (
-    <div className="p-2 border border-green-300 rounded-2xl shodow-green-50 shodow-xl text-2xl w-sm min-h-full ">
-      <p>Vérifie ton terminal</p>
+    <div>
+      <p>Bonjour bienvenue dans cours_assistance_app!</p>
+      <Link href="/login" className="p-2 bg-emerald-600 text-white inline-block rounded-2xl">Get Started</Link>
     </div>
   )
 }

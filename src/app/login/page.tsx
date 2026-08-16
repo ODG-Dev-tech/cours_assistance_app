@@ -1,32 +1,19 @@
-'use client'
-import { createClient } from "@/utils/supabase/client"
-import { useState } from "react"
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import LoginFormPage from "./LoginForm";
 
+export default async function Login(){
+    const cookieStore = await cookies()
+    const supabase = createClient(cookieStore)
 
-export default function LoginPage(){
-    const [email, setEmail] = useState("");
-    const [feedbackMessage, setFeedbackMessage]= useState("");
-
-    const supabase = createClient();
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
-        e.preventDefault();
-        const {error } = await supabase.auth.signInWithOtp( {email , options: { emailRedirectTo: "http://localhost:3000/auth/callback"} });
-
-        if(error){
-            setFeedbackMessage(`Erreur: ${error.message}`)
-        }else{
-            setFeedbackMessage("Aller clicker le lien dans votre boite mail pour continuer!");
-        }
+    const { data: { user } } = await supabase.auth.getUser()
+    
+    if (user) {
+        redirect('/fiches')
     }
-
+    
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email: <input type="email" name="email" id="email" value={email} onChange={(e)=> setEmail(e.target.value)} required /></label>
-                <input type="submit" value="Envoyer" />
-                <p>{feedbackMessage}</p>
-            </form>
-        </div>
-    )
+            <LoginFormPage />
+        )
 }
