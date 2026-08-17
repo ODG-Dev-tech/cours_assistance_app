@@ -1,6 +1,8 @@
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import BuildPDF from './ExportToPDF'
+
 
 export default async function FicheDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
@@ -34,6 +36,7 @@ export default async function FicheDetailPage({ params }: { params: Promise<{ id
             ))}
         </ul>
         <p><strong>Matériel :</strong> {fiche.content.materiel}</p>
+        <BuildPDF />
         </div>
     )
 }
