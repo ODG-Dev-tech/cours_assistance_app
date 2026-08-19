@@ -20,7 +20,6 @@ export default async function ProfilePage() {
 
     return (
         <div>
-        <h1>Mon profil</h1>
         <ProfileForm initialProfile={profile} />
         </div>
     )
