@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import PaymentBanner from './PaymentBanner'
 
 export default async function FichesPage() {
     const cookieStore = await cookies()
@@ -36,7 +37,9 @@ function disciplineClass(discipline: string) {
         .single()
 
     return (
+        
         <div className="max-w-3xl mx-auto px-6 py-10">
+            <PaymentBanner />
             <div className="flex items-center justify-between mb-10 gap-2">
                 <div>
                     <h1 className="font-display font-extrabold text-2xl md:text-3xl text-ink">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import NextTopLoader from 'nextjs-toploader'
 
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 
@@ -23,7 +24,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" className={`${display.variable} ${body.variable}`}>
-      <body className="min-h-full flex flex-col font-display text-brand">{children}</body>
+      <body className="min-h-full flex flex-col font-display text-brand">
+        <NextTopLoader color="#3B5FEB" height={5} showSpinner={false} />
+        {children}
+        </body>
     </html>
   );
 }

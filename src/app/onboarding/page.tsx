@@ -37,7 +37,7 @@ export default function CompletCount() {
     }
 
     return (
-        <div className="min-h-screen bg-soft/40 flex items-center justify-center px-6 py-12">
+        <div className="min-h-screen bg-soft/40 flex items-center justify-center px-6 py-12 hero-grid">
             <div className="w-full max-w-md">
                 <div className="text-center mb-8">
                     <div className="w-12 h-12 rounded-xl bg-linear-to-r from-brand to-brand2 flex items-center justify-center text-white font-display font-bold text-lg mx-auto mb-4">

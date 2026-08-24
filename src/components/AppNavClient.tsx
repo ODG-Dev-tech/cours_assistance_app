@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 const links = [
     { href: '/fiches', label: 'Mes fiches' },
+    {href: "/subscription" , label: "S\'abonner"}
 ]
 
 export default function AppNavClient({ initial }: { initial: string }) {

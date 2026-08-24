@@ -24,8 +24,8 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
             <Link
-                href="/onboarding"
-                className="bg-gradient-to-r from-brand to-brand2 text-white font-semibold px-8 py-4 rounded-xl w-full sm:w-auto hover:opacity-90 transition"
+                href="/login"
+                className="bg-linear-to-r from-brand to-brand2 text-white font-semibold px-8 py-4 rounded-xl w-full sm:w-auto hover:opacity-90 transition"
             >
                 Commencer →
             </Link>
