@@ -12,7 +12,7 @@ export default function LoginFormPage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: "http://localhost:3000/auth/callback" } });
+        const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback` } });
 
         if (error) {
             setFeedbackMessage(`Erreur : ${error.message}`)

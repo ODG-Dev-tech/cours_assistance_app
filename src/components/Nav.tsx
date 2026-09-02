@@ -7,7 +7,7 @@ export default function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-5 relative">
+        <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-5 sticky top-0 min-w-full bg-white z-50">
         <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-linear-to-r from-brand to-brand2 flex items-center justify-center text-white font-display font-bold text-sm">
             F+
@@ -17,13 +17,13 @@ export default function Nav() {
 
         {/* Liens desktop */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
-            <Link href="#fonctionnalites" className="hover:text-brand transition">
+            <Link href="/features" className="hover:text-brand transition">
             Fonctionnalités
             </Link>
-            <Link href="#a-propos" className="hover:text-brand transition">
+            <Link href="/about" className="hover:text-brand transition">
             À propos
             </Link>
-            <Link href="#contact" className="hover:text-brand transition">
+            <Link href="/contact" className="hover:text-brand transition">
             Contact
             </Link>
         </div>
@@ -74,7 +74,7 @@ export default function Nav() {
             <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="bg-gradient-to-r from-brand to-brand2 text-white text-sm font-semibold py-3 rounded-lg mt-3 text-center"
+                className="bg-linear-to-r from-brand to-brand2 text-white text-sm font-semibold py-3 rounded-lg mt-3 text-center"
             >
                 Se connecter
             </Link>

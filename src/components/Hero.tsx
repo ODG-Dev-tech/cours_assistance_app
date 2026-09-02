@@ -1,6 +1,10 @@
+'use client'
 import Link from "next/link";
-
+import { useState } from "react";
+import DemoModal from "@/components/DemoModal"
 export default function Hero() {
+    const [showDemo, setShowDemo] = useState(false)
+
     return (
         <section className="relative">
         <div className="hero-grid absolute inset-0 -z-10" />
@@ -29,13 +33,15 @@ export default function Hero() {
             >
                 Commencer →
             </Link>
-            <Link
-                href="#demo"
+            <button
+                onClick={() => setShowDemo(true)}
                 className="border border-line text-brand font-semibold px-8 py-4 rounded-xl w-full sm:w-auto hover:bg-soft transition flex items-center justify-center gap-2"
             >
                 <span>▷</span> Voir une démo
-            </Link>
+            </button>
             </div>
+
+            {showDemo && <DemoModal onClose={() => setShowDemo(false)} />}
 
             <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-10">
             <div>

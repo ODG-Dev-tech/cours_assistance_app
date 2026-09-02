@@ -3,23 +3,11 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import PaymentBanner from './PaymentBanner'
-
+import FichesSelector from './FichesSelector'
 export default async function FichesPage() {
     const cookieStore = await cookies()
     const supabase = createClient(cookieStore)
 
-    const disciplineStyles: Record<string, string> = {
-    'Mathématiques': 'bg-brand/10 text-brand',
-    'Français': 'bg-purple-100 text-purple-700',
-    'Sciences': 'bg-emerald-100 text-emerald-700',
-    'Histoire-Géo': 'bg-amber-100 text-amber-700',
-    'Géographie': 'bg-amber-100 text-amber-700',
-    'Éd. civique': 'bg-rose-100 text-rose-700',
-    'Anglais': 'bg-sky-100 text-sky-700',
-}
-function disciplineClass(discipline: string) {
-    return disciplineStyles[discipline] ?? 'bg-soft text-brand'
-}
 
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
@@ -56,31 +44,11 @@ function disciplineClass(discipline: string) {
                     + Nouvelle fiche
                 </Link>
             </div>
- 
+
             {fiches && fiches.length > 0 ? (
-                <ul className="flex flex-col gap-3">
-                    {fiches.map((fiche) => (
-                        <li key={fiche.id}>
-                            <Link
-                                href={`/fiches/${fiche.id}`}
-                                className="flex items-center justify-between gap-4 bg-white border border-line rounded-xl px-5 py-4 hover:border-brand/40 hover:shadow-sm transition"
-                            >
-                                <div className="min-w-0">
-                                    <p className="font-display font-semibold text-ink truncate">
-                                        {fiche.title}
-                                    </p>
-                                    <div className="flex items-center gap-2 mt-1.5">
-                                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${disciplineClass(fiche.discipline)}`}>
-                                            {fiche.discipline}
-                                        </span>
-                                        <span className="text-xs text-muted">{fiche.theme}</span>
-                                    </div>
-                                </div>
-                                <span className="text-brand text-lg shrink-0">→</span>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+
+            <FichesSelector fiches={fiches} />
+
             ) : (
                 <div className="bg-white border border-line rounded-2xl p-10 text-center">
                     <p className="font-display font-semibold text-ink mb-2">
