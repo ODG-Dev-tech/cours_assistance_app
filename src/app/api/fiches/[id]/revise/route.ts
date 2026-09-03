@@ -86,7 +86,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
             headers: {
                 Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
                 'Content-Type': 'application/json',
-                'HTTP-Referer': 'http://localhost:3000', // TODO (déploiement) : NEXT_PUBLIC_SITE_URL
+                'HTTP-Referer': `${process.env.NEXT_PUBLIC_SITE_URL}`,
                 'X-Title': 'Fiches+',
             },
             body: JSON.stringify({
