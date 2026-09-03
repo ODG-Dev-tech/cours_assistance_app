@@ -17,7 +17,9 @@ export default async function ProfilePage() {
         .select('*')
         .eq('id', user.id)
         .single()
-
+    if(!profile){
+        redirect("/onboarding")
+    }
     return (
         <div>
         <ProfileForm initialProfile={profile} />

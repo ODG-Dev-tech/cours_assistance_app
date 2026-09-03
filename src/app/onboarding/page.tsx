@@ -20,13 +20,15 @@ export default function CompletCount() {
         const { data: { user } } = await supabase.auth.getUser()
         const { error } = await supabase
             .from('profiles')
-            .update({
-                phone,
-                full_name,
-                school_name: schoolName,
-                zone
-            })
-            .eq('id', user?.id)
+            .upsert(
+                    {
+                        id: user?.id,
+                        phone,
+                        full_name,
+                        school_name: schoolName,
+                        zone
+                    }
+                )
 
         if (error) {
             setMessage(`Erreur: ${error.message}`)
