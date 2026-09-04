@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
+import { canCreateFiche } from '@/utils/subscription'
 
 const reviseFicheTool = {
     type: 'function',
@@ -51,7 +52,17 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     if (!user) {
         return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
     }
-
+    const access = await canCreateFiche(supabase, user.id)
+        if (!access.allowed) {
+            return NextResponse.json(
+                {
+                    error: access.isSubscribed
+                        ? `Limite de ${access.limit} actions atteinte pour ce mois. Votre quota se renouvelle avec votre prochain cycle d'abonnement.`
+                        : 'Quota de fiches gratuites atteint. Un abonnement est nécessaire pour réviser vos fiches.',
+                },
+                { status: 403 }
+            )
+        }
     const { message } = await request.json()
     if (!message || typeof message !== 'string') {
         return NextResponse.json({ error: 'Message manquant' }, { status: 400 })

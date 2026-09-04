@@ -20,7 +20,7 @@ export default function SubscribeButton() {
                 return
             }
 
-            // Redirection vers le guichet de paiement CinetPay
+            // Redirection vers le guichet de paiement Paydunya
             window.location.href = data.paymentUrl
         } catch {
             setError('Une erreur réseau est survenue. Vérifiez votre connexion.')

@@ -2,7 +2,12 @@
 import { useState } from "react"
 import { createClient } from "@/utils/supabase/client"
 import { useRouter } from 'next/navigation'
+import type { Metadata } from "next"
 
+export const metadata: Metadata = {
+    title: "Bienvenue",
+    robots: { index: false, follow: false },
+};
 export default function CompletCount() {
     const [phone, setPhone] = useState("")
     const [full_name, setFullName] = useState("")

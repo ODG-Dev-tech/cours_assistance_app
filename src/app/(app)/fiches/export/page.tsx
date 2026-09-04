@@ -2,7 +2,11 @@ import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import ExportView from './ExportView'
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+    title: "Exporter des fiches",
+};
 export default async function ExportPage({
     searchParams,
 }: {

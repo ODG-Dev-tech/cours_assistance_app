@@ -261,10 +261,10 @@ export default function Features() {
                   <span className="font-display text-[40px] font-extrabold text-white tracking-[-0.03em]">5 000</span>
                   <span className="text-[15px] font-semibold text-white/70">FCFA</span>
                 </div>
-                <p className="text-[13px] text-white/60 mb-5">par mois · accès illimité</p>
+                <p className="text-[13px] text-white/60 mb-5">par mois · jusqu&apos;à 200 fiches</p>
                 <ul className="list-none p-0 flex flex-col gap-2.5 mb-6 flex-1">
                   {[
-                    'Fiches illimitées',
+                    'Jusqu\'à 200 fiches par mois',
                     'Toutes les matières CP1 → CM2',
                     'Export PDF professionnel',
                     'Alignement programmes MENAPLN',
@@ -280,7 +280,7 @@ export default function Features() {
                   Commencer — 5 000 FCFA/mois
                 </a>
                 <p className="text-center text-[11px] text-white/50 mt-2.5">
-                  Paiement via Orange Money · Moov Money · Carte bancaire (Visa/Mastercard)
+                  Paiement via Orange Money · Moov Money · Carte bancaire
                 </p>
               </div>
             </div>

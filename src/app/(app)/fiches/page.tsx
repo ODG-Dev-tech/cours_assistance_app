@@ -4,6 +4,11 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import PaymentBanner from './PaymentBanner'
 import FichesSelector from './FichesSelector'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: "Mes fiches",
+};
 export default async function FichesPage() {
     const cookieStore = await cookies()
     const supabase = createClient(cookieStore)

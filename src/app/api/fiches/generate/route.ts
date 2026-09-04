@@ -61,12 +61,16 @@ export async function POST(request: Request) {
 
     
     const access = await canCreateFiche(supabase, user.id)
-    if (!access.allowed) {
-        return NextResponse.json(
-            { error: 'Quota de fiches gratuites atteint. Un abonnement est nécessaire.' },
-            { status: 403 }
-        )
-    }
+        if (!access.allowed) {
+            return NextResponse.json(
+                {
+                    error: access.isSubscribed
+                        ? `Limite de ${access.limit} fiches atteinte pour ce mois. Votre quota se renouvelle avec votre prochain cycle d'abonnement.`
+                        : 'Quota de fiches gratuites atteint. Un abonnement est nécessaire.',
+                },
+                { status: 403 }
+            )
+        }
 
     const body = await request.json()
     const { discipline, matiere, niveau, theme, titre, objectifs, materiels, duree, methodes, champsObservation } = body

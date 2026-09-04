@@ -54,7 +54,7 @@ const CONTACT_INFOS = [
 const FAQS = [
     {
         q: "Comment fonctionne l'abonnement à 5 000 FCFA/mois ?",
-        a: "L'abonnement vous donne un accès illimité à toutes les fonctionnalités de Fiches+ pendant un mois. Il se renouvelle automatiquement chaque mois et peut être résilié à tout moment depuis votre espace personnel.",
+        a: "L'abonnement vous donne accès à toutes les fonctionnalités de Fiches+ (génération, révision, export) avec jusqu'à 200 fiches par mois. Il se renouvelle automatiquement chaque mois et peut être résilié à tout moment depuis votre espace personnel.",
     },
     {
         q: 'Les fiches sont-elles conformes aux programmes officiels du MENAPLN ?',
@@ -66,7 +66,7 @@ const FAQS = [
     },
     {
         q: 'Comment régler mon abonnement ?',
-        a: 'Le paiement se fait via CinetPay, en toute sécurité : Orange Money, Moov Money, ou carte bancaire (Visa/Mastercard). Un reçu est généré après chaque transaction validée.',
+        a: 'Le paiement se fait via PayDunya, en toute sécurité : Orange Money, Moov Money, ou carte bancaire. Un reçu est généré après chaque transaction validée.',
     },
     ]
 

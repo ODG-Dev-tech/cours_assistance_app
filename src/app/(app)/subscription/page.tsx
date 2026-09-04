@@ -2,7 +2,11 @@ import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import SubscribeButton from './Abonnement'
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+    title: "Abonnement",
+};
 export default async function AbonnementPage() {
     const cookieStore = await cookies()
     const supabase = createClient(cookieStore)
@@ -31,7 +35,7 @@ export default async function AbonnementPage() {
                     Abonnement
                 </h1>
                 <p className="text-sm text-muted">
-                    Accès illimité aux fiches pédagogiques Fiches+.
+                    Jusqu&apos;à 200 fiches pédagogiques par mois avec Fiches+.
                 </p>
             </div>
 
@@ -80,10 +84,10 @@ export default async function AbonnementPage() {
 
                     <ul className="px-6 py-6 flex flex-col gap-3">
                         {[
-                            'Fiches illimitées par mois',
+                            'Jusqu\'à 200 fiches par mois',
                             'Toutes matières du CP1 au CM2',
                             'Export PDF prêt à imprimer',
-                            'Paiement Orange Money / Moov Money',
+                            'Paiement Orange Money, Moov Money ou carte bancaire',
                         ].map((item) => (
                             <li key={item} className="flex items-center gap-2.5 text-sm text-ink/80">
                                 <span className="text-brand">✓</span>

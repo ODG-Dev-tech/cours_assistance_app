@@ -4,7 +4,11 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { canCreateFiche, FREE_FICHES_LIMIT } from '@/utils/subscription'
 import NewFicheForm from './NewFicheForm'
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+    title: "Nouvelle fiche",
+};
 export default async function NewFichePage() {
     const cookieStore = await cookies()
     const supabase = createClient(cookieStore)
@@ -17,25 +21,31 @@ export default async function NewFichePage() {
     const access = await canCreateFiche(supabase, user.id)
 
     if (!access.allowed) {
-        return (
-            <div className="max-w-md mx-auto px-6 py-16 text-center">
-                <div className="bg-white border border-line rounded-2xl p-8">
-                    <p className="font-display font-extrabold text-xl text-ink mb-2">
-                        Vous avez utilisé vos {FREE_FICHES_LIMIT} fiches gratuites
-                    </p>
-                    <p className="text-sm text-muted mb-6">
-                        Continuez avec l&apos;abonnement à 5 000 FCFA/mois pour créer des fiches en illimité.
-                    </p>
+    return (
+        <div className="max-w-md mx-auto px-6 py-16 text-center">
+            <div className="bg-white border border-line rounded-2xl p-8">
+                <p className="font-display font-extrabold text-xl text-ink mb-2">
+                    {access.isSubscribed
+                        ? `Vous avez atteint votre limite de ${access.limit} fiches ce mois-ci`
+                        : `Vous avez utilisé vos ${FREE_FICHES_LIMIT} fiches gratuites`}
+                </p>
+                <p className="text-sm text-muted mb-6">
+                    {access.isSubscribed
+                        ? 'Votre quota se renouvelle avec votre prochain cycle d\'abonnement.'
+                        : 'Continuez avec l\'abonnement à 5 000 FCFA/mois pour créer jusqu\'à 200 fiches par mois.'}
+                </p>
+                {!access.isSubscribed && (
                     <Link
                         href="/subscription"
                         className="inline-block bg-linear-to-r from-brand to-brand2 text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition"
                     >
                         Voir l&apos;abonnement
                     </Link>
-                </div>
+                )}
             </div>
-        )
-    }
+        </div>
+    )
+}
 
     return (
         <div className="max-w-2xl mx-auto px-6 py-10">
@@ -44,7 +54,7 @@ export default async function NewFichePage() {
             </h1>
             <p className="text-sm text-muted mb-8">
                 {access.isSubscribed
-                    ? 'Décrivez votre leçon, la fiche est générée en quelques secondes.'
+                    ? `Décrivez votre leçon, la fiche est générée en quelques secondes. (${access.fichesUsed}/${access.limit} fiches ce mois-ci)`
                     : `Il vous reste ${FREE_FICHES_LIMIT - (access.fichesUsed ?? 0)} fiche(s) gratuite(s) sur ${FREE_FICHES_LIMIT}.`}
             </p>
 

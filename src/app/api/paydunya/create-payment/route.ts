@@ -40,7 +40,7 @@ export async function POST() {
         .insert({
             teacher_id: user.id,
             status: 'unpaid',
-            amount: 5000,
+            amount: 100,
             payment_ref: merchantTransactionId,
         })
 
@@ -53,7 +53,7 @@ export async function POST() {
     try {
             const payload = {
         invoice: {
-            total_amount: 5000,
+            total_amount: 100,
             description: 'Abonnement mensuel Fiches+',
             customer: {
                 name: `${firstName} ${lastName}`,
