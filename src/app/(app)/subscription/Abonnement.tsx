@@ -11,7 +11,7 @@ export default function SubscribeButton() {
         setError('')
 
         try {
-            const res = await fetch('/api/paydunya/create-payment', { method: 'POST' })
+            const res = await fetch('/api/chariow/create-payment', { method: 'POST' })
             const data = await res.json()
 
             if (!res.ok || !data.paymentUrl) {
