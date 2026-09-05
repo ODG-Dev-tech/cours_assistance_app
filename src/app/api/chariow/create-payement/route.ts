@@ -28,6 +28,7 @@ export async function POST() {
     const cleanPhone = (profile?.phone ?? '').replace(/\s+/g, '').replace(/^\+226/, '')
 
     // 3. Appel à l'API Chariow pour initier le checkout
+    console.log('CHARIOW_PRODUCT_ID utilisé:', CHARIOW_PRODUCT_ID)
     try {
         const response = await fetch(CHARIOW_API_URL, {
             method: 'POST',
