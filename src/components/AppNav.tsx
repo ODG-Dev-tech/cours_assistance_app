@@ -11,7 +11,7 @@ export default async function AppNav() {
 
     const { data: profile } = await supabase
         .from('profiles')
-        .select('full_name')
+        .select('full_name, role')
         .eq('id', user.id)
         .single()
 
@@ -20,5 +20,7 @@ export default async function AppNav() {
         user.email?.[0]?.toUpperCase() ??
         '?'
 
-    return <AppNavClient initial={initial} />
+    const isAdmin = profile?.role === 'admin'
+
+    return <AppNavClient initial={initial} isAdmin={isAdmin} />
 }

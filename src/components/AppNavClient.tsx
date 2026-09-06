@@ -5,11 +5,15 @@ import Link from 'next/link'
 
 const links = [
     { href: '/fiches', label: 'Mes fiches' },
-    {href: "/subscription" , label: "S\'abonner"}
+    { href: "/subscription", label: "S'abonner" }
 ]
 
-export default function AppNavClient({ initial }: { initial: string }) {
+export default function AppNavClient({ initial, isAdmin }: { initial: string; isAdmin?: boolean }) {
     const [menuOpen, setMenuOpen] = useState(false)
+
+    const visibleLinks = isAdmin
+        ? [...links, { href: '/admin', label: 'Admin' }]
+        : links
 
     return (
         <nav className="print:hidden sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
@@ -25,7 +29,7 @@ export default function AppNavClient({ initial }: { initial: string }) {
 
                 {/* Liens desktop */}
                 <div className="hidden md:flex items-center gap-6 text-sm font-medium text-ink/70">
-                    {links.map((link) => (
+                    {visibleLinks.map((link) => (
                         <Link key={link.href} href={link.href} className="hover:text-brand transition">
                             {link.label}
                         </Link>
@@ -72,7 +76,7 @@ export default function AppNavClient({ initial }: { initial: string }) {
                 {/* Menu mobile */}
                 {menuOpen && (
                     <div className="absolute top-full left-0 right-0 bg-white border border-line rounded-xl shadow-lg mx-4 mt-2 p-4 flex flex-col gap-1 md:hidden z-10">
-                        {links.map((link) => (
+                        {visibleLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
