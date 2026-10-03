@@ -144,13 +144,13 @@ export default function FicheCard({ fiche, color }: { fiche: Fiche; color: Color
             {phases.length > 0 && (
                 <div className="mb-8">
                     <h2 className="font-display font-bold text-base text-ink mb-4">Déroulement</h2>
-                    <div className="border rounded-lg overflow-x-auto" style={{ borderColor: 'var(--accent-soft)' }}>
+                    <div className="rounded-lg overflow-x-auto" style={{ border: '2px solid var(--accent)' }}>
                         <table className="w-full text-sm border-collapse">
                             <thead>
-                                <tr style={{ backgroundColor: 'var(--accent-soft)' }}>
-                                    <th className="text-left font-semibold text-ink p-3 w-1/5">Étapes</th>
-                                    <th className="text-left font-semibold text-ink p-3">Rôle de l&apos;enseignant(e)</th>
-                                    <th className="text-left font-semibold text-ink p-3">Activités apprenant(e)s</th>
+                                <tr style={{ backgroundColor: 'var(--accent-soft)', borderBottom: '2px solid var(--accent)' }}>
+                                    <th className="text-left font-semibold text-ink p-3 w-1/5" style={{ borderRight: '2px solid var(--accent)' }}>Étapes</th>
+                                    <th className="text-left font-semibold text-ink p-3" style={{ borderRight: '2px solid var(--accent)' }}>Rôle de l&apos;enseignant(e)</th>
+                                    <th className="text-left font-semibold text-ink p-3" style={{ borderRight: '2px solid var(--accent)' }}>Activités apprenant(e)s</th>
                                     <th className="text-left font-semibold text-ink p-3 w-1/6">Observations</th>
                                 </tr>
                             </thead>
@@ -158,20 +158,20 @@ export default function FicheCard({ fiche, color }: { fiche: Fiche; color: Color
                                 {phases.map((group) => (
                                     <Fragment key={group.phase}>
                                         <tr style={{ backgroundColor: 'var(--accent-soft)' }}>
-                                            <td colSpan={4} className="p-2 text-center font-display font-bold text-xs uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
+                                            <td colSpan={4} className="p-2 text-center font-display font-bold text-xs uppercase tracking-wide" style={{ color: 'var(--accent)', borderTop: '2px solid var(--accent)', borderBottom: '2px solid var(--accent)' }}>
                                                 {group.phase}
                                             </td>
                                         </tr>
                                         {group.steps.map((step, i) => (
-                                            <tr key={`${group.phase}-${i}`} className="border-t" style={{ borderColor: 'var(--accent-soft)' }}>
-                                                <td className="p-3 align-top">
-                                                    <p className="font-semibold text-ink">{step.etape}</p>
-                                                    <p className="text-xs text-muted mt-1">({step.duree})</p>
-                                                </td>
-                                                <td className="p-3 align-top text-ink/80 whitespace-pre-line">{step.roleEnseignant}</td>
-                                                <td className="p-3 align-top text-ink/80 whitespace-pre-line">{step.activitesApprenant}</td>
-                                                <td className="p-3 align-top text-ink/60">{step.observations || '—'}</td>
-                                            </tr>
+                                            <tr key={`${group.phase}-${i}`} style={{ borderTop: '2px solid var(--accent-soft)' }}>
+                                            <td className="p-3 align-top" style={{ borderRight: '2px solid var(--accent-soft)' }}>
+                                                <p className="font-semibold text-ink">{step.etape}</p>
+                                                <p className="text-xs text-muted mt-1">({step.duree})</p>
+                                            </td>
+                                            <td className="p-3 align-top text-ink whitespace-pre-line" style={{ borderRight: '2px solid var(--accent-soft)' }}>{step.roleEnseignant}</td>
+                                            <td className="p-3 align-top text-ink whitespace-pre-line" style={{ borderRight: '2px solid var(--accent-soft)' }}>{step.activitesApprenant}</td>
+                                            <td className="p-3 align-top text-ink/70">{step.observations || '—'}</td>
+                                        </tr>
                                         ))}
                                     </Fragment>
                                 ))}

@@ -21,7 +21,8 @@ export default async function FichesPage() {
 
     const { data: fiches } = await supabase
         .from('fiches')
-        .select('*')
+        .select('id, title, discipline, theme, level, created_at')
+        .order('created_at', { ascending: false })
 
     const { data: profile } = await supabase
         .from('profiles')

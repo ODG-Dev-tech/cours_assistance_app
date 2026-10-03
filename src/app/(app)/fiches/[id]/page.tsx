@@ -3,6 +3,8 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import FicheDetailView from './FicheDetailView'
+import FeedbackPrompt from '@/components/FeedbackPrompt'
+import { hasActiveSubscription } from '@/utils/subscription'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({
@@ -41,6 +43,28 @@ export default async function FicheDetailPage({ params }: { params: Promise<{ id
         .select('*')
         .eq('id', id)
         .single()
+        const activeSubscription = await hasActiveSubscription(supabase, user.id)
+
+    let showFeedbackPrompt = false
+    let profile: { full_name: string | null } | null = null
+
+    if (!activeSubscription) {
+        const { count } = await supabase
+            .from('fiches')
+            .select('id', { count: 'exact', head: true })
+            .eq('teacher_id', user.id)
+
+        showFeedbackPrompt = count === 2
+
+        if (showFeedbackPrompt) {
+            const { data } = await supabase
+                .from('profiles')
+                .select('full_name')
+                .eq('id', user.id)
+                .single()
+            profile = data
+        }
+    }
 
     if (!fiche) {
         return (
@@ -53,5 +77,18 @@ export default async function FicheDetailPage({ params }: { params: Promise<{ id
         )
     }
 
-    return <FicheDetailView fiche={fiche} />
+        return (
+        <>
+            <FicheDetailView fiche={fiche} />
+            {showFeedbackPrompt && (
+                <div className="max-w-2xl mx-auto px-6">
+                    <FeedbackPrompt
+                        context="after_second_fiche"
+                        teacherName={profile?.full_name}
+                        teacherEmail={user.email}
+                    />
+                </div>
+            )}
+        </>
+    )
 }
