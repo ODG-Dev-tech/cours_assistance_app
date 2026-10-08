@@ -81,7 +81,7 @@ export default async function FicheDetailPage({ params }: { params: Promise<{ id
         <>
             <FicheDetailView fiche={fiche} />
             {showFeedbackPrompt && (
-                <div className="max-w-2xl mx-auto px-6">
+                <div className="max-w-2xl mx-auto px-6 pb-10">
                     <FeedbackPrompt
                         context="after_second_fiche"
                         teacherName={profile?.full_name}

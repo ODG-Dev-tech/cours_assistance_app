@@ -56,7 +56,7 @@ export default function FeedbackPrompt({ context, teacherName, teacherEmail }: P
     if (dismissed) return null
 
     return (
-        <div className="bg-soft border border-line rounded-xl p-5 mt-6">
+        <div className="print:hidden bg-soft border border-line rounded-xl p-5 mt-6">
             {status === 'sent' ? (
                 <p className="text-sm text-emerald-700 text-center py-2">
                     Merci beaucoup pour votre retour.
