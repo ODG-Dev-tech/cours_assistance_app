@@ -51,21 +51,21 @@ export default function Nav() {
         {menuOpen && (
             <div className="absolute top-full left-0 right-0 bg-white border border-line rounded-xl shadow-lg mx-4 mt-2 p-4 flex flex-col gap-1 md:hidden z-10">
             <Link
-                href="#fonctionnalites"
+                href="/features"
                 onClick={() => setMenuOpen(false)}
                 className="py-3 border-b border-line text-sm font-medium"
             >
                 Fonctionnalités
             </Link>
             <Link
-                href="#a-propos"
+                href="/about"
                 onClick={() => setMenuOpen(false)}
                 className="py-3 border-b border-line text-sm font-medium"
             >
                 À propos
             </Link>
             <Link
-                href="#contact"
+                href="/contact"
                 onClick={() => setMenuOpen(false)}
                 className="py-3 border-b border-line text-sm font-medium"
             >
