@@ -88,7 +88,7 @@ function BgDecorations() {
             <section className="max-w-275 mx-auto px-5 pb-14">
             <div className="bg-white rounded-2xl border border-brand/8 shadow-[0_1px_8px_rgba(0,0,0,0.04)] px-6 py-8 md:px-10 md:py-10 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-8 items-center">
                 <div className="text-center">
-                <p className="font-display text-5xl font-extrabold text-brand tracking-[-0.03em] mb-1">10</p>
+                <p className="font-display text-5xl font-extrabold text-brand tracking-[-0.03em] mb-1">12</p>
                 <p className="text-sm text-muted font-medium">enseignants interrogés lors de notre enquête terrain</p>
                 </div>
                 <div className="text-center border-t md:border-t-0 md:border-l border-line pt-6 md:pt-0 md:pl-8">

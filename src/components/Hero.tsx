@@ -54,15 +54,15 @@ export default function Hero() {
             </div>
             <div>
                 <p className="font-display font-extrabold text-2xl md:text-3xl text-ink">
-                8 sec
+                10 sec
                 </p>
                 <p className="text-xs md:text-sm text-muted mt-1">
-                par fiche générée*
+                par fiche générée
                 </p>
             </div>
             <div>
                 <p className="font-display font-extrabold text-2xl md:text-3xl text-ink">
-                10
+                12
                 </p>
                 <p className="text-xs md:text-sm text-muted mt-1">
                 enseignants consultés

@@ -2,6 +2,7 @@
 import { createClient } from "@/utils/supabase/client"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from 'next/link'
 
 export default function LoginFormPage() {
     const [mode, setMode] = useState<'login' | 'signup'>('login')
@@ -207,6 +208,11 @@ export default function LoginFormPage() {
                             className="border border-line rounded-lg px-4 py-3 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition"
                         />
                     </div>
+                    {mode === 'login' && (
+                        <Link href="/forgot-password" className="text-xs text-brand hover:underline self-end -mt-2">
+                            Mot de passe oublié ?
+                        </Link>
+                    )}
 
                     {mode === 'signup' && (
                         <div className="flex flex-col gap-1.5">
